@@ -46,7 +46,10 @@ public class Block extends Rectangle {
                     break;
             }
         } else {
-            tower.physics();
+            try {
+                tower.physics();
+            } catch (Exception e) { }
+            
         }
     }
     

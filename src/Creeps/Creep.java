@@ -15,7 +15,6 @@ public abstract class Creep extends Rectangle {
     private int creepWalk = 0;
     private static int upward = 0, downward = 1, right = 2, left = 3;
     private int direction = right;
-    private int creepID = Value.getairAir();
     private int walkFrame = 0, walkSpeed = 10;
     private boolean inGame = false;
     private boolean hasUpward = false;
@@ -24,39 +23,18 @@ public abstract class Creep extends Rectangle {
     private boolean hasLeft = false;
     private int Reward;
     
-    public int getxC() {
-        return xC;
-    }
-    
-    public int getyC() {
-        return yC;
-    }
-    
     public int getHealth() {
         return health;
     }
     
-    public int getcreepSize() {
-        return creepSize;
-    }
-    
-    public int getcreepWalk() {
-        return creepWalk;
-    }
-    
-    public int getdirection() {
-        return direction;
-    }
     
     public boolean isInGame() {
         return inGame;
     }
     
-    public Creep() {
-        
-    }
+    public Creep() { }
     
-    public void spawnCreep(int creepID) {        
+    public void spawnCreep() {        
         for (int y = 0; y < Screen.getBoard().getBlock().length; y++) {
             if (Screen.getBoard().getBlock(y,0).getGroundID() >= Value.getgroundRoad()) {
                 setBounds(Screen.getBoard().getBlock(y,0).x, Screen.getBoard().getBlock(y,0).y, creepSize, creepSize);
@@ -64,15 +42,12 @@ public abstract class Creep extends Rectangle {
                 yC = y;
             }
         }
-        
-        this.creepID = creepID;
         inGame = true;
         health = creepSize;
     }
     
     public void physics() {
-        int walkCount=0;
-        if (walkFrame >= walkSpeed) {
+        if (walkFrame >= getWalkSpeed()) {
             if (direction == right) {
                 x += 1;
             } else if (direction == left) {
@@ -112,8 +87,7 @@ public abstract class Creep extends Rectangle {
                 } catch (Exception e) { }
                 
                 if (Screen.getBoard().getBlock(yC,xC).getAirID() == Value.getairCave()) {
-                    deleteCreep();
-                    Screen.getPlayer().loseHealth();
+                    attackTower();
                 }
                 
                 hasRight = false;
@@ -122,11 +96,7 @@ public abstract class Creep extends Rectangle {
                 hasDownward = false;
                 creepWalk = 0;
            }
-           walkCount++;
-           if (walkCount==10){
-               walkCount=0;
-               walkSpeed=10;
-           }
+           
            walkFrame = 0;
         } else {
             walkFrame += 1;
@@ -139,6 +109,14 @@ public abstract class Creep extends Rectangle {
         direction = right;
         creepWalk = 0;
         Screen.getPlayer().addCoins(getBounty());
+        // Screen.getCreeps().remove(this);
+    }
+    
+    public void attackTower() {
+        inGame = false;
+        direction = right;
+        creepWalk = 0;
+        Screen.getPlayer().loseHealth();
     }
     
     public void loseHealth(int damage) {
@@ -161,7 +139,7 @@ public abstract class Creep extends Rectangle {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setStroke(new BasicStroke(1));
         
-        g.drawImage(Screen.getTilesetCreep(creepID), x, y, width, height, null);
+        g.drawImage(Screen.getTilesetCreep(getCreepID()), x, y, width, height, null);
         
         // draw health bar
         g.setColor(new Color(180, 50, 50));
@@ -171,15 +149,12 @@ public abstract class Creep extends Rectangle {
         g.setColor(new Color(50, 180, 50));
         g.fillRect(x, y - 10, health, 3);
         
-        // draw outline for health baro;;
+        // draw outline for health bar
         g.setColor(new Color(0, 0, 0));
         g.drawRect(x, y - 10, width - 1, 2);
     }
     
-    public void slowSpeed (int x)
-    {
-        walkSpeed += x;
-    }
-    
     public abstract int getBounty();
+    public abstract int getCreepID();
+    public abstract int getWalkSpeed();
 }

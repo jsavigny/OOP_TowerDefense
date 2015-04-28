@@ -13,7 +13,8 @@ import Noname.Screen;
  */
 public class WeakCreep extends Creep {
     private final int bounty = 2;
-    private int walkSpeed = 20;
+    private final int creepID = 0;
+    private int walkSpeed = 15;
     private int health = 50;
     
     public WeakCreep() {
@@ -30,5 +31,9 @@ public class WeakCreep extends Creep {
     
     public int getHealth() {
         return health;
+    }
+    
+    public int getCreepID() {
+        return creepID;
     }
 }

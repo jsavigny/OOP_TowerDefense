@@ -20,6 +20,7 @@ public class Screen extends JPanel implements Runnable {
     
     private static Point mse = new Point(0, 0);
     private static int myWidth, myHeight;
+    private int creepCount = 0;
     
     private Image background;
     private static Image[] tilesetGround = new Image[100];
@@ -68,9 +69,16 @@ public class Screen extends JPanel implements Runnable {
         
         map.load(new File("save/mission1"));
         
-        for (int i = 0; i < 5; i++) {
-            Creep creep = new WeakCreep();
-            creeps.add(creep);
+        for (int i = 0; i < 1; i++) {
+            if (i < 5) {
+                Creep creep = new WeakCreep();
+                creeps.add(creep);
+                System.out.println("boooom2");
+            } else {
+                Creep creep = new StrongCreep();
+                creeps.add(creep);
+                System.out.println("boooom");
+            }
         }
     }
     
@@ -107,8 +115,7 @@ public class Screen extends JPanel implements Runnable {
         if (spawnFrame >= spawnTime) {
             for (Creep creep : creeps) {
                 if (!creep.isInGame()) {
-                    creep.spawnCreep(1);
-                    System.out.println("objek created");
+                    creep.spawnCreep();
                     break;
                 }
             }
@@ -124,12 +131,9 @@ public class Screen extends JPanel implements Runnable {
             if (!isFirst) {
                 board.physics();
                 creepSpawner();
-                int i = 0;
                 for (Creep creep : creeps) {
                     if (creep.isInGame()) {
                         creep.physics();
-                        i++;
-                        System.out.println(i);
                     }
                 }
             }
