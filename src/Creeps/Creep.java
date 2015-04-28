@@ -36,7 +36,7 @@ public abstract class Creep extends Rectangle {
     
     public void spawnCreep() {        
         for (int y = 0; y < Screen.getBoard().getBlock().length; y++) {
-            if (Screen.getBoard().getBlock(y,0).getGroundID() >= Value.getgroundRoad()) {
+            if (Screen.getBoard().getBlock(y,0).getGroundID() >= Value.getInstance().getgroundRoad()) {
                 setBounds(Screen.getBoard().getBlock(y,0).x, Screen.getBoard().getBlock(y,0).y, creepSize, creepSize);
                 xC = 0;
                 yC = y;
@@ -75,18 +75,18 @@ public abstract class Creep extends Rectangle {
                 }
                 
                 try {
-                    if (Screen.getBoard().getBlock(yC+1,xC).getGroundID() >= Value.getgroundRoad() && !hasUpward) {
+                    if (Screen.getBoard().getBlock(yC+1,xC).getGroundID() >= Value.getInstance().getgroundRoad() && !hasUpward) {
                         direction = downward;
-                    } else if (Screen.getBoard().getBlock(yC-1,xC).getGroundID() >= Value.getgroundRoad() && !hasDownward) {
+                    } else if (Screen.getBoard().getBlock(yC-1,xC).getGroundID() >= Value.getInstance().getgroundRoad() && !hasDownward) {
                         direction = upward;
-                    } else if (Screen.getBoard().getBlock(yC,xC+1).getGroundID() >= Value.getgroundRoad() && !hasLeft) {
+                    } else if (Screen.getBoard().getBlock(yC,xC+1).getGroundID() >= Value.getInstance().getgroundRoad() && !hasLeft) {
                         direction = right;
-                    } else if (Screen.getBoard().getBlock(yC,xC-1).getGroundID() >= Value.getgroundRoad() && !hasRight) {
+                    } else if (Screen.getBoard().getBlock(yC,xC-1).getGroundID() >= Value.getInstance().getgroundRoad() && !hasRight) {
                         direction = left;
                     }
                 } catch (Exception e) { }
                 
-                if (Screen.getBoard().getBlock(yC,xC).getAirID() == Value.getairCave()) {
+                if (Screen.getBoard().getBlock(yC,xC).getAirID() == Value.getInstance().getairCave()) {
                     attackTower();
                 }
                 

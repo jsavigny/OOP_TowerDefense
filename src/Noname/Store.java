@@ -31,7 +31,7 @@ public class Store {
         if (mouseButton == 1) {
             for (int i = 0; i < button.length; i++) {
                 if (button[i].contains(Screen.getMse())) {
-                    if (towersID[i] != Value.getairAir()) {
+                    if (towersID[i] != Value.getInstance().getairAir()) {
                         heldID = towersID[i];
                         realID = i;
                         holdsItem = true;
@@ -46,7 +46,7 @@ public class Store {
             for (int y = 0; y < Screen.getBoard().getBlock().length; y++) {
                 for (int x = 0; x < Screen.getBoard().getBlock(0).length; x++) {
                     if (Screen.getBoard().getBlock(y, x).contains(Screen.getMse())) {
-                        if (Screen.getBoard().getBlock(y, x).getGroundID() < Value.getgroundRoad() && Screen.getBoard().getBlock(y, x).getAirID() == Value.getairAir()) {
+                        if (Screen.getBoard().getBlock(y, x).getGroundID() < Value.getInstance().getgroundRoad() && Screen.getBoard().getBlock(y, x).getAirID() == Value.getInstance().getairAir()) {
                             Screen.getBoard().getBlock(y, x).setAirID(heldID);
                             Screen.getPlayer().addCoins(-towersPrice[realID]);
                         }
@@ -72,7 +72,7 @@ public class Store {
             }
             g.drawImage(Screen.getTilesetRes(0), button[i].x, button[i].y, button[i].width, button[i].height, null);
             
-            if (towersID[i] != Value.getairAir()) {
+            if (towersID[i] != Value.getInstance().getairAir()) {
                 g.drawImage(Screen.getTilesetAir(towersID[i]), button[i].x + itemIn, button[i].y + itemIn, button[i].width - itemIn*2, button[i].height - itemIn*2, null);
             }
             if (towersPrice[i] > 0) {

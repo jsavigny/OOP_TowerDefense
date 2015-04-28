@@ -5,6 +5,20 @@ package Value;
  * @author ACER E1 471
  */
 public class Value {
+    private static Value instance;
+    
+    private Value() {
+        
+    }
+    
+    public static synchronized Value getInstance() {
+        if (instance == null) {
+            instance = new Value();
+        }
+        return instance;
+    }
+    
+    
     private static int groundGrass = 0;
     private static int groundRoad = 1;
     
@@ -12,19 +26,19 @@ public class Value {
     private static int airCave = 0;
     private static int creepAir = -1;
     
-    public static int getgroundGrass() {
+    public int getgroundGrass() {
         return groundGrass;
     }
     
-    public static int getgroundRoad() {
+    public int getgroundRoad() {
         return groundRoad;
     }
     
-    public static int getairAir() {
+    public int getairAir() {
         return airAir;
     }
     
-    public static int getairCave() {
+    public int getairCave() {
         return airCave;
     }
 }
