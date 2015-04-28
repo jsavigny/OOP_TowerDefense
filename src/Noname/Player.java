@@ -10,6 +10,7 @@ public class Player {
     private int coins = 35;
     private int lives = 100;
     private int iconSize = 20;
+    private int killCount = 0;
     
     public Rectangle buttonHealth;
     public Rectangle buttonCoins;
@@ -22,17 +23,14 @@ public class Player {
         coins += n;
     }
     
-    public void loseHealth(){
-        lives -= 1;
+    public void loseHealth(int damage){
+        lives -= damage;
     }
     
     public void define() {
         buttonHealth = new Rectangle(Screen.getBoard().getBlock(0, 0).x, 435, iconSize, iconSize);
         buttonCoins = new Rectangle(Screen.getBoard().getBlock(0, 0).x, 485 - iconSize, iconSize, iconSize);
     }
-    
-    public int getCoins() { return coins; }
-    public int getLives() { return lives; }
     
     public void draw(Graphics g) {
         g.setColor(new Color(255, 255, 255));
@@ -45,4 +43,10 @@ public class Player {
         g.drawString("" + lives, buttonHealth.x + buttonHealth.width + 3, buttonHealth.y + 14);
         g.drawString("" + coins, buttonCoins.x + buttonCoins.width + 3, buttonCoins.y + 14);
     }
+    
+    public int getCoins() { return coins; }
+    public int getLives() { return lives; }
+    public int getKillCount() { return killCount; }
+    public void setKillCount(int n) { killCount = n; }
+    public void addKillCount(int n) { killCount += n; }    
 }

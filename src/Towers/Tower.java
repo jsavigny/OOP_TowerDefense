@@ -11,8 +11,9 @@ public abstract class Tower extends Rectangle {
     protected int shotCreep = -1;
     protected int loseFrame = 0;
     protected boolean shooting = false;
+    protected int killCount = 0;
     
-    public Tower(){}
+    public Tower() { }
     
     public abstract int getTowerSquareSize();
     
@@ -46,6 +47,10 @@ public abstract class Tower extends Rectangle {
             }
 
             if (Screen.getCreeps(shotCreep).isDeath()) {
+                killCount++;
+                if (killCount % 5 == 0) {
+                    upgrade(104);
+                }
                 shooting = false;
                 shotCreep = -1;
             }
@@ -55,4 +60,6 @@ public abstract class Tower extends Rectangle {
     public abstract void attack(Graphics g);
     
     public abstract int getDamage();
+    
+    public abstract void upgrade(int n);
 }

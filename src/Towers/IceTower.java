@@ -10,9 +10,10 @@ import java.awt.*;
 public class IceTower extends Tower {
     private static int airID = 2;
     private static int price = 15;
-    private int towerSquareSize = 130;
+    private int towerSquareSize = 52*2;
     private int loseTime = 100;
     private int damage = 1;
+   
     
     public IceTower(int x, int y, int width, int height) {
         towerSquare = new Rectangle(x - towerSquareSize/2, y - towerSquareSize/2, width + towerSquareSize, height + towerSquareSize);
@@ -32,7 +33,7 @@ public class IceTower extends Tower {
         g2.setStroke(new BasicStroke(1));
         
         g.setColor(new Color(1, 240, 250));
-        // g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+        g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
 
         if (shooting && loseFrame >= loseTime - 100) {
             g2.setStroke(new BasicStroke(2));
@@ -47,4 +48,11 @@ public class IceTower extends Tower {
     public int getDamage() { return damage; }
     
     public int getLoseTime() { return loseTime; } 
+    
+    public void upgrade(int n) {
+        if (towerSquareSize <= 200) {
+            towerSquareSize += n;
+            towerSquare = new Rectangle(x - towerSquareSize/2, y - towerSquareSize/2, width + towerSquareSize, height + towerSquareSize);
+        }
+    }
 }

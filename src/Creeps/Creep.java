@@ -108,7 +108,9 @@ public abstract class Creep extends Rectangle {
         inGame = false;
         direction = right;
         creepWalk = 0;
+        Screen.getPlayer().addKillCount(1);
         Screen.getPlayer().addCoins(getBounty());
+        System.out.println(Screen.getPlayer().getKillCount());
         // Screen.getCreeps().remove(this);
     }
     
@@ -116,7 +118,7 @@ public abstract class Creep extends Rectangle {
         inGame = false;
         direction = right;
         creepWalk = 0;
-        Screen.getPlayer().loseHealth();
+        Screen.getPlayer().loseHealth(getDamage());
     }
     
     public void loseHealth(int damage) {
@@ -157,4 +159,5 @@ public abstract class Creep extends Rectangle {
     public abstract int getBounty();
     public abstract int getCreepID();
     public abstract int getWalkSpeed();
+    public abstract int getDamage();
 }

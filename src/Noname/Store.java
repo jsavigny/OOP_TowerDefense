@@ -78,7 +78,7 @@ public class Store {
             if (towersPrice[i] > 0) {
                 g.setColor(new Color(255, 255, 255));
                 g.setFont(new Font("Courier New", Font.BOLD, 14));
-                g.drawString("" + towersPrice[i], button[i].x + 4, button[i].y + 12);
+                g.drawString("$" + towersPrice[i], button[i].x + 4, button[i].y + 12);
             }
         }
         

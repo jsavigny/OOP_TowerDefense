@@ -10,10 +10,9 @@ import java.awt.*;
 public class LaserTower extends Tower {
     private static int airID = 1;
     private static int price = 10;
-    
+    private int towerSquareSize = 52*4;
     private int loseTime = 700;
-    private int damage = 5;
-    private int towerSquareSize = 300;
+    private int damage = 7;
 
     public LaserTower(int x, int y, int width, int height) {
         towerSquare = new Rectangle(x - towerSquareSize/2, y - towerSquareSize/2, width + towerSquareSize, height + towerSquareSize);
@@ -48,5 +47,12 @@ public class LaserTower extends Tower {
     public int getDamage() { return damage; }
     
     public int getLoseTime() { return loseTime; }
+    
+    public void upgrade(int n) {
+        if (towerSquareSize <= 450) {
+            towerSquareSize += n;
+            towerSquare = new Rectangle(x - towerSquareSize/2, y - towerSquareSize/2, width + towerSquareSize, height + towerSquareSize);
+        }
+    }
     
 }
