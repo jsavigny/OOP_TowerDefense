@@ -36,20 +36,13 @@ public class Block extends Rectangle {
     }
     
     public void physics() {
-        if (tower == null) {
-            switch (airID){
-                case 1 :
-                    tower = new IceTower(x, y, width, height);
-                    break;
-                case 2 :
-                    tower = new LaserTower(x, y, width, height);
-                    break;
-            }
+        if ((tower == null) && (airID != -1)) {
+            TowerFactory towerFactory = new TowerFactory();
+            tower = towerFactory.getTower(x, y, width, height,airID);
         } else {
             try {
                 tower.physics();
             } catch (Exception e) { }
-            
         }
     }
     
