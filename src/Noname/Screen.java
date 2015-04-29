@@ -129,7 +129,7 @@ public class Screen extends JPanel implements Runnable {
     @Override
     public void run() {
         while(true) {
-            if (!isFirst) {
+            if (!isFirst && !player.isGameOver() && !player.isWin()) {
                 board.physics();
                 board.creepSpawner();
                 for (Creep creep : creeps) {

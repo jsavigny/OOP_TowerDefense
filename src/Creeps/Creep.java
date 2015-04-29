@@ -29,7 +29,7 @@ public abstract class Creep extends Rectangle {
     }
 
     public Creep() { }
-    public abstract double getHealth();
+    
     public void spawnCreep() {
         for (int y = 0; y < Screen.getBoard().getBlock().length; y++) {
             if (Screen.getBoard().getBlock(y,0).getGroundID() >= Value.getInstance().getgroundRoad()) {
@@ -153,7 +153,12 @@ public abstract class Creep extends Rectangle {
     }
 
     public abstract int getBounty();
+    
     public abstract int getCreepID();
+    
     public abstract int getWalkSpeed();
+    
     public abstract int getDamage();
+    
+    public abstract double getHealth();
 }
