@@ -16,12 +16,8 @@ public class StrongCreep extends Creep {
     private final int creepID = 1;
     private final int damage = 20;
     private int walkSpeed = 10;
-<<<<<<< HEAD
     private double iHealth = 78;
     private final int maxHealth = 78;
-=======
-    private int iHealth = 78;
->>>>>>> bc7954fd12f4dd063414a8d55cc469fb62849bb4
 
     public StrongCreep() { }
 
@@ -33,11 +29,7 @@ public class StrongCreep extends Creep {
         return walkSpeed;
     }
 
-<<<<<<< HEAD
     public double getHealth() {
-=======
-    public int getHealth() {
->>>>>>> bc7954fd12f4dd063414a8d55cc469fb62849bb4
         return iHealth;
     }
 
@@ -49,8 +41,5 @@ public class StrongCreep extends Creep {
         return damage;
     }
 
-<<<<<<< HEAD
     public double getMaxHealth(){ return maxHealth; }
-=======
->>>>>>> bc7954fd12f4dd063414a8d55cc469fb62849bb4
 }

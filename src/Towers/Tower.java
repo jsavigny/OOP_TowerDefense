@@ -43,8 +43,8 @@ public abstract class Tower extends Rectangle {
                 Class creep = Screen.getCreeps(shotCreep).getClass();
                 System.out.println(creep.getName());
                 double damageDone=getDamage();
-                if (creep.getName()=="Creeps.StrongCreep"){
-                    damageDone*=0.75;
+                if (creep.getName().equals("Creeps.StrongCreep")) {
+                    damageDone *= 0.75;
                     System.out.println(damageDone);
                 }
                 Screen.getCreeps(shotCreep).loseHealth(damageDone);
