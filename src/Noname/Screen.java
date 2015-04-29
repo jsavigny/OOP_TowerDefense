@@ -124,27 +124,14 @@ public class Screen extends JPanel implements Runnable {
         }
     }
     
-    private int spawnTime = 2400, spawnFrame = 0;
-    public void creepSpawner() {
-        if (spawnFrame >= spawnTime && !player.isWin() && !player.isGameOver()) {
-            for (Creep creep : creeps) {
-                if (!creep.isInGame()) {
-                    creep.spawnCreep();
-                    break;
-                }
-            }
-            spawnFrame = 0;
-        } else {
-            spawnFrame += 1;
-        }
-    }
+
     
     @Override
     public void run() {
         while(true) {
             if (!isFirst) {
                 board.physics();
-                creepSpawner();
+                board.creepSpawner();
                 for (Creep creep : creeps) {
                     if (creep.isInGame()) {
                         creep.physics();

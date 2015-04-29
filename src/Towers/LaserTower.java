@@ -12,7 +12,7 @@ public class LaserTower extends Tower {
     private static int price = 10;
     private int towerSquareSize = 52*4;
     private int loseTime = 700;
-    private int damage = 7;
+    private double damage = 7;
 
     public LaserTower(int x, int y, int width, int height) {
         towerSquare = new Rectangle(x - towerSquareSize/2, y - towerSquareSize/2, width + towerSquareSize, height + towerSquareSize);
@@ -32,7 +32,7 @@ public class LaserTower extends Tower {
         g2.setStroke(new BasicStroke(1));
         
         g.setColor(new Color(255, 0, 0));
-        g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+        //g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
 
         if (shooting && loseFrame >= loseTime - 100) {
             g2.setStroke(new BasicStroke(2));
@@ -44,7 +44,7 @@ public class LaserTower extends Tower {
     
     public static int getPrice() { return price; }
     
-    public int getDamage() { return damage; }
+    public double getDamage() { return damage; }
     
     public int getLoseTime() { return loseTime; }
     

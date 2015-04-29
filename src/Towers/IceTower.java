@@ -12,7 +12,7 @@ public class IceTower extends Tower {
     private static int price = 15;
     private int towerSquareSize = 52*2;
     private int loseTime = 100;
-    private int damage = 1;
+    private double damage = 1;
    
     
     public IceTower(int x, int y, int width, int height) {
@@ -33,7 +33,7 @@ public class IceTower extends Tower {
         g2.setStroke(new BasicStroke(1));
         
         g.setColor(new Color(1, 240, 250));
-        g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+        //g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
 
         if (shooting && loseFrame >= loseTime - 100) {
             g2.setStroke(new BasicStroke(2));
@@ -45,7 +45,7 @@ public class IceTower extends Tower {
     
     public static int getPrice() { return price; }
     
-    public int getDamage() { return damage; }
+    public double getDamage() { return damage; }
     
     public int getLoseTime() { return loseTime; } 
     

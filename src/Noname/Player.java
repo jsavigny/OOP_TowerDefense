@@ -7,8 +7,8 @@ import java.awt.*;
  * @author husnimun
  */
 public class Player {
-    private final int killsToWin = 20;
-    private int coins = 100;
+    private final int killsToWin = 50;
+    private int coins = 45;
     private int lives = 100;
     private int iconSize = 20;
     private int killCount = 0;

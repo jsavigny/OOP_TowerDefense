@@ -40,7 +40,15 @@ public abstract class Tower extends Rectangle {
 
         if (shooting) {
             if (loseFrame >= getLoseTime()) {
-                Screen.getCreeps(shotCreep).loseHealth(getDamage());
+                Class creep = Screen.getCreeps(shotCreep).getClass();
+                System.out.println(creep.getName());
+                double damageDone=getDamage();
+                if (creep.getName()=="Creeps.StrongCreep"){
+                    damageDone*=0.75;
+                    System.out.println(damageDone);
+                }
+                Screen.getCreeps(shotCreep).loseHealth(damageDone);
+
                 loseFrame = 0;
             } else {
                 loseFrame += 1;
@@ -59,7 +67,7 @@ public abstract class Tower extends Rectangle {
     
     public abstract void attack(Graphics g);
     
-    public abstract int getDamage();
+    public abstract double getDamage();
     
     public abstract void upgrade(int n);
 }

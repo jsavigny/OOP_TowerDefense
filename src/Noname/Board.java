@@ -2,6 +2,7 @@ package Noname;
 
 import java.awt.*;
 
+import Creeps.Creep;
 import Value.*;
 
 /**
@@ -63,4 +64,18 @@ public class Board {
     public Block[] getBlock(int i) { return block[i]; }
     
     public Block getBlock(int x, int y) { return block[x][y]; }
+    private int spawnTime = 2000, spawnFrame = 0;
+    public void creepSpawner() {
+        if (spawnFrame >= spawnTime && !Screen.getPlayer().isWin() && !Screen.getPlayer().isGameOver()) {
+            for (Creep creep : Screen.getCreeps()) {
+                if (!creep.isInGame()) {
+                    creep.spawnCreep();
+                    break;
+                }
+            }
+            spawnFrame = 0;
+        } else {
+            spawnFrame += 1;
+        }
+    }
 }

@@ -16,29 +16,32 @@ public class WeakCreep extends Creep {
     private final int creepID = 0;
     private final int damage = 10;
     private int walkSpeed = 15;
-    private int health = 50;
-    
+    private double iHealth = 52;
+    private final int maxHealth = 52;
     public WeakCreep() {
-        
+
     }
-    
+
     public int getBounty() {
         return bounty;
     }
-    
+
     public int getWalkSpeed() {
         return walkSpeed;
     }
-    
-    public int getHealth() {
-        return health;
+
+    public double getHealth() {
+        return iHealth;
     }
-    
+
     public int getCreepID() {
         return creepID;
     }
-    
+
     public int getDamage() {
         return damage;
     }
+
+    public double getMaxHealth(){ return maxHealth; }
+
 }
