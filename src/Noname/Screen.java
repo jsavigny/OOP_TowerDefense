@@ -108,11 +108,25 @@ public class Screen extends JPanel implements Runnable {
         store.draw(g);
         player.draw(g);
         
+        if (player.isWin()) {
+            g.setColor(new Color(0, 0, 0));
+            g.fillRect(0, 0, myWidth, myHeight);
+            g.setColor(new Color(255, 255, 255));
+            g.setFont(new Font("Courier New", Font.BOLD, 20));
+            g.drawString("You Win!", myWidth/2 - 55, myHeight/2);
+            
+        } else if (player.isGameOver()) {
+            g.setColor(new Color(0, 0, 0));
+            g.fillRect(0, 0, myWidth, myHeight);
+            g.setColor(new Color(255, 255, 255));
+            g.setFont(new Font("Courier New", Font.BOLD, 20));
+            g.drawString("Game Over", myWidth/2 - 55, myHeight/2);
+        }
     }
     
     private int spawnTime = 2400, spawnFrame = 0;
     public void creepSpawner() {
-        if (spawnFrame >= spawnTime) {
+        if (spawnFrame >= spawnTime && !player.isWin() && !player.isGameOver()) {
             for (Creep creep : creeps) {
                 if (!creep.isInGame()) {
                     creep.spawnCreep();

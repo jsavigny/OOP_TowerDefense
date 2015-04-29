@@ -7,7 +7,8 @@ import java.awt.*;
  * @author husnimun
  */
 public class Player {
-    private int coins = 35;
+    private final int killsToWin = 20;
+    private int coins = 100;
     private int lives = 100;
     private int iconSize = 20;
     private int killCount = 0;
@@ -21,6 +22,14 @@ public class Player {
     
     public void addCoins(int n){
         coins += n;
+    }
+    
+    public boolean isWin() {
+        return killCount >= killsToWin;
+    }
+    
+    public boolean isGameOver() {
+        return lives <= 0;
     }
     
     public void loseHealth(int damage){
