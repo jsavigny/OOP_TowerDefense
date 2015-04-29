@@ -1,6 +1,6 @@
 package Towers;
 
-import Noname.Screen;
+import Gameplay.Screen;
 import java.awt.*;
 
 /**
@@ -44,7 +44,6 @@ public abstract class Tower extends Rectangle {
                 double damageDone = getDamage();
                 if (creep.getName().equals("Creeps.StrongCreep")) {
                     damageDone *= 0.75;
-                    System.out.println(damageDone);
                 }
                 Screen.getCreeps(shotCreep).loseHealth(damageDone);
 

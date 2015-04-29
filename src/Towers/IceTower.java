@@ -1,6 +1,6 @@
 package Towers;
 
-import Noname.Screen;
+import Gameplay.Screen;
 import Value.Value;
 import java.awt.*;
 
@@ -33,7 +33,7 @@ public class IceTower extends Tower {
         g2.setStroke(new BasicStroke(1));
         
         g.setColor(new Color(1, 240, 250));
-        //g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+        g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
 
         if (shooting && loseFrame >= loseTime - 100) {
             g2.setStroke(new BasicStroke(2));
@@ -50,7 +50,7 @@ public class IceTower extends Tower {
     public int getLoseTime() { return loseTime; } 
     
     public void upgrade(int n) {
-        if (towerSquareSize <= 200) {
+        if (towerSquareSize < 208) {
             towerSquareSize += n;
             towerSquare = new Rectangle(x - towerSquareSize/2, y - towerSquareSize/2, width + towerSquareSize, height + towerSquareSize);
         }

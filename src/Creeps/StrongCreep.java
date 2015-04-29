@@ -5,7 +5,7 @@
  */
 package Creeps;
 
-import Noname.Screen;
+import Gameplay.Screen;
 
 /**
  *
@@ -15,10 +15,10 @@ public class StrongCreep extends Creep {
     private final int bounty = 4;
     private final int creepID = 1;
     private final int damage = 20;
+    private final int maxHealth = 78;
     private int walkSpeed = 10;
     private double iHealth = 78;
-    private final int maxHealth = 78;
-
+    
     public StrongCreep() { }
 
     public int getBounty() {
@@ -41,5 +41,5 @@ public class StrongCreep extends Creep {
         return damage;
     }
 
-    public double getMaxHealth(){ return maxHealth; }
+    public double getMaxHealth() { return maxHealth; }
 }

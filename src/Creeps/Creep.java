@@ -1,6 +1,6 @@
 package Creeps;
 
-import Noname.Screen;
+import Gameplay.Screen;
 import Value.Value;
 import java.awt.*;
 /**
@@ -9,11 +9,11 @@ import java.awt.*;
  */
 
 public abstract class Creep extends Rectangle {
+    private final int creepSize = 52;
+    private final int upward = 0, downward = 1, right = 2, left = 3;
     private int xC, yC;
     private double health;
-    private int creepSize = 52;
     private int creepWalk = 0;
-    private static int upward = 0, downward = 1, right = 2, left = 3;
     private int direction = right;
     private int walkFrame = 0, walkSpeed = 10;
     private boolean inGame = false;
@@ -21,9 +21,7 @@ public abstract class Creep extends Rectangle {
     private boolean hasDownward = false;
     private boolean hasRight = false;
     private boolean hasLeft = false;
-
-
-    public abstract double getMaxHealth();
+   
     public boolean isInGame() {
         return inGame;
     }
@@ -108,7 +106,7 @@ public abstract class Creep extends Rectangle {
         Screen.getPlayer().addCoins(getBounty());
         System.out.println(Screen.getPlayer().getKillCount());
         // Screen.getCreeps().remove(this);
-    }
+}
 
     public void attackTower() {
         inGame = false;
@@ -151,6 +149,8 @@ public abstract class Creep extends Rectangle {
         g.setColor(new Color(0, 0, 0));
         g.drawRect(x, y - 10, (int)getMaxHealth() - 1, 2);
     }
+    
+    public abstract double getMaxHealth();
 
     public abstract int getBounty();
     
@@ -161,4 +161,5 @@ public abstract class Creep extends Rectangle {
     public abstract int getDamage();
     
     public abstract double getHealth();
+    
 }

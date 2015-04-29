@@ -1,6 +1,6 @@
 package Towers;
 
-import Noname.Screen;
+import Gameplay.Screen;
 import Value.Value;
 import java.awt.*;
 
@@ -32,7 +32,7 @@ public class LaserTower extends Tower {
         g2.setStroke(new BasicStroke(1));
         
         g.setColor(new Color(255, 0, 0));
-        //g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+        g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
 
         if (shooting && loseFrame >= loseTime - 100) {
             g2.setStroke(new BasicStroke(2));
@@ -49,7 +49,7 @@ public class LaserTower extends Tower {
     public int getLoseTime() { return loseTime; }
     
     public void upgrade(int n) {
-        if (towerSquareSize <= 450) {
+        if (towerSquareSize < 312) {
             towerSquareSize += n;
             towerSquare = new Rectangle(x - towerSquareSize/2, y - towerSquareSize/2, width + towerSquareSize, height + towerSquareSize);
         }

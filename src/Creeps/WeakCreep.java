@@ -5,7 +5,7 @@
  */
 package Creeps;
 
-import Noname.Screen;
+import Gameplay.Screen;
 
 /**
  *

@@ -1,4 +1,4 @@
-package Noname;
+package Gameplay;
 
 import java.awt.*;
 import javax.swing.*;
@@ -73,11 +73,9 @@ public class Screen extends JPanel implements Runnable {
             if (i % 2 == 0) {
                 Creep creep = new WeakCreep();
                 creeps.add(creep);
-                System.out.println("boooom2");
             } else {
                 Creep creep = new StrongCreep();
                 creeps.add(creep);
-                System.out.println("boooom");
             }
         }
     }

@@ -1,4 +1,4 @@
-package Noname;
+package Gameplay;
 
 import java.awt.*;
 
@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class Player {
     private final int killsToWin = 50;
-    private int coins = 45;
+    private int coins = 25;
     private int lives = 100;
     private int iconSize = 20;
     private int killCount = 0;
@@ -44,8 +44,10 @@ public class Player {
     public void draw(Graphics g) {
         g.setColor(new Color(255, 255, 255));
         g.setFont(new Font("Courier New", Font.BOLD, 14));
+        
         // draw health icon
         g.drawImage(Screen.getTilesetRes(1), buttonHealth.x, buttonHealth.y, iconSize, iconSize, null);
+        
         // draw coin icon
         g.drawImage(Screen.getTilesetRes(2), buttonCoins.x, buttonCoins.y, iconSize, iconSize, null);
         
@@ -54,8 +56,13 @@ public class Player {
     }
     
     public int getCoins() { return coins; }
+    
     public int getLives() { return lives; }
+    
     public int getKillCount() { return killCount; }
+    
     public void setKillCount(int n) { killCount = n; }
+    
     public void addKillCount(int n) { killCount += n; }    
+    
 }

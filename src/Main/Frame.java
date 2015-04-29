@@ -1,9 +1,9 @@
 package Main;
 
+import Gameplay.Screen;
 import java.awt.*;
 import javax.swing.*;
 
-import Noname.*;
 
 /**
  *
