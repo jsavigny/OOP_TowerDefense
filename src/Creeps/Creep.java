@@ -21,15 +21,26 @@ public abstract class Creep extends Rectangle {
     private boolean hasDownward = false;
     private boolean hasRight = false;
     private boolean hasLeft = false;
+<<<<<<< HEAD
 
 
     public abstract double getMaxHealth();
+=======
+    private int Reward;
+
+
+
+>>>>>>> bc7954fd12f4dd063414a8d55cc469fb62849bb4
     public boolean isInGame() {
         return inGame;
     }
 
     public Creep() { }
+<<<<<<< HEAD
     public abstract double getHealth();
+=======
+    public abstract int getHealth();
+>>>>>>> bc7954fd12f4dd063414a8d55cc469fb62849bb4
     public void spawnCreep() {
         for (int y = 0; y < Screen.getBoard().getBlock().length; y++) {
             if (Screen.getBoard().getBlock(y,0).getGroundID() >= Value.getInstance().getgroundRoad()) {
@@ -117,7 +128,11 @@ public abstract class Creep extends Rectangle {
         Screen.getPlayer().loseHealth(getDamage());
     }
 
+<<<<<<< HEAD
     public void loseHealth(double damage) {
+=======
+    public void loseHealth(int damage) {
+>>>>>>> bc7954fd12f4dd063414a8d55cc469fb62849bb4
         health -= damage;
         checkDeath();
     }
@@ -145,7 +160,11 @@ public abstract class Creep extends Rectangle {
 
         // draw health
         g.setColor(new Color(50, 180, 50));
+<<<<<<< HEAD
         g.fillRect(x, y - 10, (int)health, 3);
+=======
+        g.fillRect(x, y - 10, health, 3);
+>>>>>>> bc7954fd12f4dd063414a8d55cc469fb62849bb4
 
         // draw outline for health bar
         g.setColor(new Color(0, 0, 0));
