@@ -1,7 +1,9 @@
 package Main;
 
+import Gameplay.Screen;
 import java.awt.*;
 import javax.swing.*;
+
 
 /**
  *
@@ -9,8 +11,8 @@ import javax.swing.*;
  */
 public class Frame extends JFrame {
     
-    public static String title = "Tower of Greece";
-    public static Dimension size = new Dimension(700, 550);
+    private String title = "Tower of Greece";
+    private static Dimension size = new Dimension(700, 550);
     
     public Frame() {
         setTitle(title);
@@ -18,7 +20,6 @@ public class Frame extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
         init();
     }
         
@@ -33,5 +34,9 @@ public class Frame extends JFrame {
     
     public static void main(String[] args) {
         Frame frame = new Frame();
+    }
+    
+    public static Dimension getTheSize() {
+        return size;
     }
 }
